@@ -1,0 +1,32 @@
+{
+  "mcpServers": {
+    "shrimp-task-manager": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-shrimp-task-manager"
+      ],
+      "env": {
+        "DATA_DIR": "C:/Users/Diogo/Dev/magic-task",
+        "TEMPLATES_USE": "en",
+        "ENABLE_GUI": "false"
+      },
+      "alwaysAllow": [
+        "plan_task",
+        "analyze_task",
+        "reflect_task",
+        "split_tasks",
+        "init_project_rules",
+        "process_thought",
+        "list_tasks",
+        "execute_task",
+        "verify_task",
+        "delete_task",
+        "clear_all_tasks",
+        "update_task",
+        "query_task",
+        "get_task_detail"
+      ]
+    }
+  }
+}
