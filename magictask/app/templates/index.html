@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>MagicTask</h1>
+    
+    <form id="task-form"> <!-- Renamed from new-task-form for clarity -->
+        <input type="text" id="task-title" placeholder="Enter task title..." required>
+        <label for="task-urgency">Urgent:</label>
+        <input type="checkbox" id="task-urgency"> <!-- Simple checkbox for urgency 0 or 1 -->
+        <label for="task-effort">Effort (1-3):</label>
+        <input type="number" id="task-effort" min="1" max="3" value="1">
+        <button type="submit" id="task-submit-btn">Add Task</button>
+        <button type="button" id="cancel-edit-btn" style="display:none;">Cancel Edit</button>
+    </form>
+
+    <div id="view-toggle-buttons">
+        <button id="show-active-btn" class="view-toggle-btn active">Active Tasks</button>
+        <button id="show-completed-btn" class="view-toggle-btn">Completed Tasks</button>
+        <button id="show-all-btn" class="view-toggle-btn">All Tasks</button>
+    </div>
+
+    <div id="focus-mode-toggle-container" style="text-align: center; margin-bottom: 15px;">
+       <button id="start-focus-mode-btn" class="action-button">Start Focus Mode</button>
+   </div>
+    
+    <h2>Tasks</h2>
+    <ul id="task-list-container">
+        <!-- Tasks will be loaded here by JavaScript -->
+    </ul>
+
+    <div id="pomodoro-timer-container">
+        <h3>Pomodoro Timer</h3>
+        <div id="pomodoro-display">
+            <span id="pomodoro-state">Idle</span> - <span id="pomodoro-time">25:00</span>
+        </div>
+        <div id="pomodoro-controls">
+            <button id="pomodoro-start-btn">Start</button>
+            <button id="pomodoro-pause-btn">Pause</button>
+            <button id="pomodoro-reset-btn">Reset</button>
+            <button id="pomodoro-skip-btn">Skip to Break/Work</button> 
+        </div>
+    </div>
+{% endblock %}

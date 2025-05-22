@@ -1,0 +1,51 @@
+{
+  "tasks": [],
+  "app_state": {
+    "current_view": "active",
+    "selected_task_id": null,
+    "focus_mode": false,
+    "pomodoro": {
+      "enabled": true,
+      "work_minutes": 25,
+      "break_minutes": 5,
+      "long_break_minutes": 15,
+      "cycles_before_long_break": 4,
+      "active": false,
+      "on_break": false,
+      "current_minutes": 25,
+      "current_seconds": 0,
+      "cycles_completed_today": 0
+    },
+    "last_session": {
+      "timestamp": null,
+      "view": "active",
+      "selected_task_id": null,
+      "focus_mode": false
+    },
+    "settings": {
+      "theme": "default",
+      "keyboard_shortcuts": {
+        "add_urgent_task": "Shift+1",
+        "add_normal_task": "Shift+2",
+        "add_subtask": "Shift+3",
+        "toggle_focus_mode": "Shift+F",
+        "complete_task": "Space",
+        "effort_level_1": "Alt+1",
+        "effort_level_2": "Alt+2",
+        "effort_level_3": "Alt+3",
+        "edit_task": "Shift+E",
+        "delete_task": "Shift+D",
+        "collapse_subtasks": "Ctrl+ArrowLeft",
+        "expand_subtasks": "Ctrl+ArrowRight",
+        "move_task_up": "Alt+ArrowUp",
+        "move_task_down": "Alt+ArrowDown",
+        "active_tasks_tab": "Alt+A",
+        "completed_tasks_tab": "Alt+C",
+        "toggle_pomodoro": "Shift+T",
+        "access_templates": "Alt+T",
+        "save_as_template": "Shift+S"
+      }
+    }
+  },
+  "templates": []
+}

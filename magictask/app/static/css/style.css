@@ -1,0 +1,413 @@
+body {
+    font-family: sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 20px;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+.container {
+    max-width: 700px;
+    margin: auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+h1, h2 {
+    color: #333;
+}
+
+#new-task-form {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+#new-task-form input[type="text"] {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+}
+
+#new-task-form button {
+    padding: 10px 15px;
+    background: #5cb85c;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+#new-task-form button:hover {
+    background: #4cae4c;
+}
+
+#task-list-container {
+    list-style: none;
+    padding: 0;
+}
+
+#task-list-container li {
+    padding: 10px;
+    background: #eee;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 5px;
+    border-radius: 3px;
+}
+
+/* Added styles for task details */
+.task-item {
+    padding: 10px;
+    background: #f9f9f9; /* Slightly different from main task list bg for visual hierarchy */
+    border: 1px solid #ddd;
+    margin-bottom: 8px;
+    border-radius: 3px;
+}
+
+.task-item.completed .task-title,
+.subtask-item.completed .subtask-title {
+    text-decoration: line-through;
+    color: #888;
+}
+
+.task-main-info {
+    margin-bottom: 5px;
+}
+
+.task-urgency {
+    color: red;
+    font-weight: bold;
+    margin-left: 5px;
+}
+
+.task-effort {
+    color: #555;
+    margin-left: 5px;
+}
+
+.task-created-at, .task-completed-at,
+.subtask-created-at, .subtask-completed-at {
+    font-size: 0.8em;
+    color: #777;
+}
+
+.subtask-list {
+    list-style: disc; /* Or 'circle' or none if preferred */
+    padding-left: 20px; /* Indentation */
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.subtask-item {
+    padding: 5px;
+    background: #efefef; /* Slightly different from parent task */
+    margin-bottom: 3px;
+    border-radius: 3px;
+}
+
+.task-actions {
+    margin-top: 10px; /* Space for future buttons */
+}
+
+/* Added styles for subtask form */
+.add-subtask-form {
+    display: flex; /* Align input and button nicely */
+    margin-top: 8px;
+    margin-bottom: 5px;
+}
+
+.add-subtask-form .new-subtask-title {
+    flex-grow: 1; /* Input takes available space */
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 0.9em;
+}
+
+.add-subtask-form button {
+    padding: 6px 10px;
+    background: #6c757d; /* A more subtle color for sub-actions */
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-left: 5px;
+    font-size: 0.9em;
+}
+
+.add-subtask-form button:hover {
+    background: #5a6268;
+}
+
+/* Added styles for Edit/Delete buttons and form labels */
+.task-actions button { /* General styling for action buttons */
+    margin-right: 5px;
+    padding: 5px 8px;
+    font-size: 0.9em;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+}
+.edit-task-btn {
+    background-color: #ffc107; /* Yellow */
+    border-color: #ffc107;
+    color: #212529;
+}
+.edit-task-btn:hover {
+    background-color: #e0a800;
+}
+.delete-task-btn {
+    background-color: #dc3545; /* Red */
+    border-color: #dc3545;
+    color: white;
+}
+.delete-task-btn:hover {
+    background-color: #c82333;
+}
+#task-form label {
+    margin-left: 10px;
+    margin-right: 5px;
+}
+#cancel-edit-btn {
+    background-color: #6c757d;
+    color: white;
+    margin-left: 10px;
+}
+#cancel-edit-btn:hover {
+    background-color: #5a6268;
+}
+
+/* Added styles for completion checkboxes and flex layout */
+.complete-task-cb, .complete-subtask-cb {
+    margin-right: 8px;
+    vertical-align: middle; /* Align checkbox nicely with text */
+}
+
+.task-main-info, .subtask-item {
+    display: flex; /* To align checkbox and text better */
+    align-items: center; /* Align items vertically */
+    flex-wrap: wrap; /* Allow items to wrap if space is tight */
+}
+
+.task-main-info .task-title, 
+.subtask-item .subtask-title {
+    flex-grow: 1; /* Allow title to take remaining space */
+    /* Ensure title doesn't get too squished if other items are long */
+    min-width: 100px; 
+}
+
+.task-main-info .task-urgency,
+.task-main-info .task-effort {
+    margin-left: 5px; /* Spacing between inline elements like title, urgency, effort */
+    white-space: nowrap; /* Prevent wrapping for these short indicators */
+}
+
+
+.task-main-info br, .subtask-item br { /* Hide the <br> if flex is managing layout well */
+    display: none;
+}
+
+/* Timestamps styling: make them appear on a new line, indented */
+.task-main-info .task-created-at, 
+.task-main-info .task-completed-at,
+.subtask-item .subtask-created-at, 
+.subtask-item .subtask-completed-at {
+    display: block; /* make them take their own line */
+    width: 100%; /* ensure they take full width to force new line */
+    margin-left: 25px; /* Approximate alignment if checkbox is present (adjust as needed) */
+    font-size: 0.8em;
+    color: #777;
+    margin-top: 2px; /* A little space above the timestamp line */
+}
+
+/* Ensure no double display:block from previous small tag styling if any */
+.task-main-info small, .subtask-item small {
+    font-size: 0.8em; /* from previous */
+    color: #777; /* from previous */
+    /* remove any generic 'display:block' or 'width:100%' if it was applied to all smalls */
+}
+
+/* Added styles for view toggle buttons */
+#view-toggle-buttons {
+    margin-bottom: 15px;
+    text-align: center; /* Center the buttons */
+}
+
+.view-toggle-btn {
+    padding: 8px 12px;
+    font-size: 1em;
+    border: 1px solid #007bff;
+    background-color: white;
+    color: #007bff;
+    cursor: pointer;
+    margin: 0 5px;
+    border-radius: 4px;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.view-toggle-btn:hover {
+    background-color: #007bff;
+    color: white;
+}
+
+.view-toggle-btn.active {
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+}
+/* Adjustments for the task/subtask created/completed at lines to make them block */
+.task-main-info .task-created-at, .task-main-info .task-completed-at,
+.subtask-item .subtask-created-at, .subtask-item .subtask-completed-at {
+    display: block;
+    margin-left: 22px; /* Aligns with title, assuming checkbox is ~22px wide */
+    font-size: 0.8em; /* Keep it small */
+    color: #777;
+}
+.task-main-info .task-title, .subtask-item .subtask-title {
+    vertical-align: middle; /* Helps if checkbox is not perfectly aligned by flex */
+}
+
+/* Focus Mode Styles */
+body.focus-mode-active { /* Add this class to body in focus_mode.js if needed for global overrides */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #e8f0fe; /* Light blue background for focus mode */
+}
+
+#focus-container {
+    text-align: center;
+    padding: 40px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    width: 90%;
+    max-width: 600px;
+}
+
+#current-task-title {
+    font-size: 2.2em; /* Slightly adjusted */
+    margin-bottom: 15px;
+    color: #333;
+}
+
+#current-task-effort {
+    font-size: 1.1em; /* Slightly adjusted */
+    margin-bottom: 20px;
+    color: #555;
+}
+
+#current-task-subtasks {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 30px;
+    max-width: 400px; /* Or adjust as needed */
+    margin-left:auto;
+    margin-right:auto;
+    text-align: left; /* Align subtask text left */
+}
+
+#current-task-subtasks li {
+    background-color: #f0f0f0;
+    padding: 8px 12px; /* Adjusted padding */
+    margin-bottom: 6px; /* Adjusted margin */
+    border-radius: 4px;
+    font-size: 0.95em;
+}
+
+#current-task-subtasks li.completed {
+    text-decoration: line-through;
+    color: #888;
+    background-color: #e0e0e0; /* Different bg for completed */
+}
+
+.focus-button { /* Shared style for buttons in focus mode */
+    padding: 12px 25px;
+    font-size: 1.1em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px;
+    transition: background-color 0.2s;
+}
+
+#complete-next-btn {
+    background-color: #28a745; /* Green */
+    color: white;
+}
+#complete-next-btn:hover {
+    background-color: #218838;
+}
+
+#exit-focus-btn {
+    background-color: #dc3545; /* Red */
+    color: white;
+}
+#exit-focus-btn:hover {
+    background-color: #c82333;
+}
+ #no-more-tasks-message {
+    font-size: 1.5em;
+    color: #007bff;
+    margin-bottom:20px; /* Added margin */
+}
+/* End of Focus Mode Styles */
+
+/* Added styles for Pomodoro Timer */
+#pomodoro-timer-container {
+    margin-top: 30px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+#pomodoro-display {
+    font-size: 1.8em;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+#pomodoro-state {
+    font-weight: bold;
+}
+
+#pomodoro-controls button {
+    padding: 8px 15px;
+    margin: 0 5px;
+    font-size: 0.95em;
+    border-radius: 3px;
+    border: 1px solid #007bff;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+}
+#pomodoro-controls button:hover {
+    background-color: #0056b3;
+}
+#pomodoro-controls button:disabled {
+    background-color: #ccc;
+    border-color: #ccc;
+    cursor: not-allowed;
+}
+
+/* Added styles for Start Focus Mode button */
+#focus-mode-toggle-container button.action-button {
+    padding: 10px 20px;
+    font-size: 1em;
+    background-color: #17a2b8; /* Info blue/cyan */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+#focus-mode-toggle-container button.action-button:hover {
+    background-color: #138496;
+}
