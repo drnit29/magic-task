@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Focus Mode - MagicTask</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div id="focus-container">
+        <div id="task-display-area">
+            <h1 id="current-task-title">Loading task...</h1>
+            <p id="current-task-effort"></p>
+            <ul id="current-task-subtasks">
+                <!-- Subtasks will be listed here -->
+            </ul>
+            <button id="complete-next-btn" class="focus-button">Complete & Next Task</button>
+        </div>
+        <div id="no-more-tasks-message" style="display:none;">
+            All active tasks completed in this session! Nicely done!
+        </div>
+        <button id="exit-focus-btn" class="focus-button">Exit Focus Mode</button>
+    </div>
+    <script src="{{ url_for('static', filename='js/focus_mode.js') }}"></script>
+</body>
+</html>
